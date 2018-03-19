@@ -1,0 +1,3 @@
+-FastQC https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+-Bowtie http://bowtie-bio.sourceforge.net/index.shtml
+-...
