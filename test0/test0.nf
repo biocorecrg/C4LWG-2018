@@ -1,51 +1,52 @@
 #!/usr/bin/env nextflow
 
+/*
+ *
+ * Copyright (c) 2013-2018, Centre for Genomic Regulation (CRG).
+ * Copyright (c) 2013-2018, Paolo Di Tommaso and the respective authors.
+ *
+ *   This file is part of 'Nextflow'.
+ *
+ *   Nextflow is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   Nextflow is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with Nextflow.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 /* 
- * HERE YOU HAVE THE COMMMENTS
- * NextFlow example from their website 
+ * Creates a channel emitting some string values
  */
  
-params.inputFile = "$baseDir/../testdata/test.fa" // this can be overridden by using --inputFile OTHERFILENAME
-
-sequences = file(params.inputFile)		// the "file method" returns a file system object given a file path string  
- 
-/*
- * split a fasta file in multiple files
- */
- 
-process splitSequences {
-
-    input:
-    file 'input.fa' from sequences // nextflow creates a link to the original file called "input.fa" in a folder
- 
-    output:
-    file ('seq_*') into records    // send output files to a new channel (in this case is a collection)
- 
-    """
-    awk '/^>/{f="seq_"++d} {print > f}' < input.fa
-    """
- 
-}
-
+str = Channel.from('hello', 'hola', 'bonjour', 'ciao')
 
 /*
- * Simple reverse the sequences
+ * Creates a process which declares the channel `str` as an input
+ * Each value emitted by the channel triggers the execution 
+ * of the process. The process stdout is caputured and send over 
+ * the channel `result`  
  */
  
-process reverse {
-  	tag { seq }  					// during the execution prints the indicated variable for follow-up
+process printHello {
+   input:
+   val str 
+   output: 
+   stdout into result
+   """
+   echo $str
+   """
+}	
 
- 	publishDir "output"
- 	
-    input:
-    file seq from records.flatten()  // flatten operator emits each item separately as a new channel
-
-	output:
-    file "*.rev" into reverted_seqs
+/*
+ * Subscribes the channel `result` and print the 
+ * emitted value each time a value is available
+ */ 
  
-    """
-    cat $seq | awk '{if (\$1~">") {print \$0} else system("echo " \$0 " |rev")}' > $seq".rev"
-    """
-}
-
-
+result.println()
