@@ -4,6 +4,49 @@ For this tutorial we need to install Nextflow (https://www.nextflow.io/), Singul
 
 - For installing NextFlow we need Java version 1.8. You can check with "java -version". Then just type "curl -s https://get.nextflow.io | bash" for installing a local copy in your current directory. Finally type "./nextflow run hello" for testing. 
 
-We go in the first folder **test1**
+We go in the first folder **test0**
+
+***cd test0; ls***
+* test0.nf
+
+We can have a look at the code and launch it:
+
+**nextflow run test0.nf**
+
+Nextflow creates a directory named **work** with different subfolders. Each one contains the input, output and some hidden files:
+
+* .exitcode
+* .command.log
+* .command.out
+* .command.err
+* .command.begin
+* .command.run
+* .command.sh
+
+In this case there is neither input nor output file.
+
+Second example where we read a fasta file, split it in several ones and tests on them.
+
 ***cd test1; ls***
-nextflow.config  params.config  test.nf
+* test1.nf
+
+**nextflow run test1.nf**
+In the **work** folder we have subfolders containing this time a link to the input and the output file.
+In **output** folder we have links to the final results. 
+
+Third example where we launch two fastQC analysis and we run multiQC on their result:
+***cd test2; ls***
+* params.config: with parameters
+* nextflow.config: with information about resources needed for each task and the container to be used
+* test2.nf 
+
+We can inspect the different files and launch te pipeline.
+
+**nextflow run test2.nf -bg**
+We can inspect the results in the different folders. 
+
+
+
+
+
+
