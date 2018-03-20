@@ -31,14 +31,19 @@ Second example where we read a fasta file, split it in several ones and tests on
 * test1.nf
 
 **nextflow run test1.nf**
-* 
+In the **work** folder we have subfolders containing this time a link to the input and the output file.
+In **output** folder we have links to the final results. 
 
 Third example where we launch two fastQC analysis and we run multiQC on their result:
 ***cd test2; ls***
-* test2.nf
+* params.config: with parameters
+* nextflow.config: with information about resources needed for each task and the container to be used
+* test2.nf 
 
-**nextflow run test2.nf**
-* 
+We can inspect the different files and launch te pipeline.
+
+**nextflow run test2.nf -bg**
+We can inspect the results in the different folders. 
 
 
 
