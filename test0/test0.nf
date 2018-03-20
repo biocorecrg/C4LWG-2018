@@ -72,7 +72,7 @@ process fastqc {
     output:										// It defines the output of the process (i.e. files) and send to a new channel (raw_fastqc_files)
    	file("*_fastqc.*") into raw_fastqc_files
 
-    script:									// here you have the execution of the script / program. 
+    script:									// here you have the execution of the script / program. Basically is the command line
     """
 		fastqc ${read} 
     """
