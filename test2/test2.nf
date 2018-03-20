@@ -17,6 +17,7 @@
  * Params are stored in the params.config file
  */
 
+version 			   = "1.0"
 // this prevents a warning of undefined parameter
 params.help            = false
 
