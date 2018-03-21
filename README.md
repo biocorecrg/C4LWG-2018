@@ -5,7 +5,7 @@ For this tutorial we need to install Nextflow (https://www.nextflow.io/), Singul
 - For installing NextFlow we need Java version 1.8. You can check with "java -version". Then just type "curl -s https://get.nextflow.io | bash" for installing a local copy in your current directory. Finally type "./nextflow run hello" for testing. 
 - Mac OS X users can consider installing [Homebrew](https://brew.sh) and [Homebrew-Cask](https://caskroom.github.io/).
 - Docker (Community Edition): https://www.docker.com/community-edition . Download and install last stable version in your system.
-    * Cask users: brew cask install docker
+    * Cask users: ```brew cask install docker```
 - Singularity:
     * [Linux](https://singularity.lbl.gov/install-linux)
     * [Mac](https://singularity.lbl.gov/install-mac) (Homebrew and Homebrew-Cask are needed)
