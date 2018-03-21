@@ -9,6 +9,7 @@ For this tutorial we need to install Nextflow (https://www.nextflow.io/), Singul
 - Singularity:
     * [Linux](https://singularity.lbl.gov/install-linux)
     * [Mac](https://singularity.lbl.gov/install-mac) (Homebrew and Homebrew-Cask are needed)
+      * If using Vagrant with Singularity, Vagrant shared folder with the host is ```/vagrant```. That would be the best location to place generated images.
 
 We go in the first folder **test0**
 
