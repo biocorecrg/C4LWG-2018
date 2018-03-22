@@ -1,8 +1,29 @@
 # Here we define the base image, in this case one specific Debian distro
 # This aspect is important for reproducibility / stability 
-FROM debian:jessie
+FROM biocorecrg/debian-perlbrew-pyenv
 
 # File Author / who created this. Contact point in case of problem
 MAINTAINER Bioinformatics Core CRG <biocore@crg.eu>
+
+ARG FASTQC_VERSION=0.11.5
+ARG MULTIQC_VERSION=0.9
+ARG BOWTIE_VERSION=1.2.2
+
+#Install FASTQC
+
+RUN cd /usr/local; curl -k -L https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip > fastqc.zip
+RUN unzip fastqc.zip; chmod 775 FastQC/fastqc; ln -s $PWD/FastQC/fastqc /usr/local/bin/fastqc
+
+
+# Install bowtie 
+RUN cd /usr/local; curl --fail --silent --show-error --location --remote-name https://github.com/BenLangmead/bowtie/releases/download/v$BOWTIE_VERSION/bowtie-${BOWTIE_VERSION}-linux-x86_64.zip
+RUN cd /usr/local; unzip -d /usr/local bowtie-${BOWTIE_VERSION}-linux-x86_64.zip
+
+RUN cd /usr/local; rm bowtie-${BOWTIE_VERSION}-linux-x86_64.zip
+
+# Let's put in PATH
+RUN cd /usr/local/bin; ln -s ../bowtie-${BOWTIE_VERSION}/bowtie* .
+
+# Install MultiQC
 
 
