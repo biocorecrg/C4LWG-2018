@@ -1,10 +1,11 @@
 # Here we define the base image, in this case one specific Debian distro
 # This aspect is important for reproducibility / stability 
-FROM biocorecrg/debian-perlbrew-pyenv
+FROM biocorecrg/debian-perlbrew-pyenv-java:stretch
 
 # File Author / who created this. Contact point in case of problem
 MAINTAINER Bioinformatics Core CRG <biocore@crg.eu>
 
+# Specific software versions
 ARG FASTQC_VERSION=0.11.5
 ARG MULTIQC_VERSION=0.9
 ARG BOWTIE_VERSION=1.2.2
