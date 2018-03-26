@@ -11,6 +11,25 @@ For this tutorial we need to install Nextflow (https://www.nextflow.io/), Singul
     * [Mac](https://singularity.lbl.gov/install-mac) (Homebrew and Homebrew-Cask are needed)
       * If using Vagrant with Singularity, Vagrant shared folder with the host is ```/vagrant```. That would be the best location to place generated images.
 
+
+## Software installation
+
+You can retrieve Docker image with all used software by doing:
+
+    docker pull biocorecrg/c4lwg-2018
+
+Alternately, you can always modify and build a Docker image yourself in your computer by doing:
+
+    docker build -t myimagename .
+
+### Converting Docker image into Singularity image
+
+#### Notes for MacOS X users
+
+
+## Nextflow usage
+
+
 We go in the first folder **test0**
 
 ***cd test0; ls***
