@@ -24,7 +24,12 @@ Alternately, you can always modify and build a Docker image yourself in your com
 
 ### Converting Docker image into Singularity image
 
-#### Notes for MacOS X users
+    singularity build c4lwg-2018.simg docker://biocorecrg/c4lwg-2018
+
+
+#### Notes
+
+* If you experience problems executing the generated image, e.g., ```ERROR  : No valid /bin/sh in container```, try to change your umask (e. g., ```umask 000```) [Ref](https://github.com/singularityware/singularity/issues/1079)
 
 
 ## Nextflow usage
