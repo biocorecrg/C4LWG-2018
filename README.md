@@ -6,6 +6,9 @@ For this tutorial we need to install Nextflow (https://www.nextflow.io/), Singul
 
 For sake of simplicity we provide a virtual appliance in [OVA format](https://en.wikipedia.org/wiki/Open_Virtualization_Format). They can be imported in a virtual machine system such as [Virtualbox](https://www.virtualbox.org/) ([video instructions](https://www.youtube.com/watch?v=ZCfRtQ7-bh8)).
 
+It is a Debian Stretch machine from OSBoxes project (ref: https://www.osboxes.org/debian/). Java, Docker, Singularity and Nextflow are already installed.
+
+
    * OVA: http://biocore.crg.eu/courses/C4LWG-2018/C4LWG-2018-full.ova
    * OVA md5: http://biocore.crg.eu/courses/C4LWG-2018/C4LWG-2018-full.ova.md5
 
@@ -24,6 +27,12 @@ In Mac:
     $ cat C4LWG-2018-full.ova.md5
 Check both outputs show the same string.
 
+### User login
+
+* User: osboxes
+* Password: osboxes.org
+
+If you need to use the root user (e.g. via ```su -l```), it has the same password.
 
 ## Manual installation
 
