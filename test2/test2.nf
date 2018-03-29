@@ -1,8 +1,22 @@
 #!/usr/bin/env nextflow
 
 /*
- * Copyright (c) 2018, Centre for Genomic Regulation (CRG) and the authors.
+ * Copyright (c) 2013-2018, Centre for Genomic Regulation (CRG).
  *
+ *   This file is part of 'C4LWG-2018'.
+ *
+ *   C4LWG-2018 is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   C4LWG-2018 is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with C4LWG-2018.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /* 
@@ -17,15 +31,16 @@
  * Params are stored in the params.config file
  */
 
-version 			   = "1.0"
+version                 = "1.0"
 // this prevents a warning of undefined parameter
-params.help            = false
+params.help             = false
 
 // this prints the input parameters
-log.info "BIOCORE@CRG - N F TESTPIPE  ~  version ${version}"
-log.info "============================================="
-log.info "reads                 		: ${params.reads}"
-log.info "\n"
+log.info """
+BIOCORE@CRG - N F TESTPIPE  ~  version ${version}
+=============================================
+reads                           : ${params.reads}
+"""
 
 // this prints the help in case you use --help parameter in the command line and it stops the pipeline
 if (params.help) {
@@ -58,8 +73,7 @@ Channel
  */
 process fastqc {
     publishDir fastqcOutputFolder  			// where (and whether) to publish the results
-    
-	tag { read }  							// during the execution prints the indicated variable for follow-up
+    tag "$read"  							// during the execution prints the indicated variable for follow-up
 
     input:
     file(read) from reads_for_fastqc  		// it defines the input of the process. It sets values from a channel
@@ -69,7 +83,7 @@ process fastqc {
 
     script:									// here you have the execution of the script / program. Basically is the command line
     """
-		fastqc ${read} 
+        fastqc ${read} 
     """
 }
 
@@ -77,18 +91,18 @@ process fastqc {
  * Process 2. Run multiQC on fastQC results
  */
 process multiQC {
-	    publishDir multiqcOutputFolder, mode: 'copy' 	// this time do not link but copy the output file
+    publishDir multiqcOutputFolder, mode: 'copy' 	// this time do not link but copy the output file
 
-	    input:
-	    file '*' from raw_fastqc_files.collect()		// collect the fastqc results from different executions in a single place
+    input:
+    file '*' from raw_fastqc_files.collect()		// collect the fastqc results from different executions in a single place
 
-	    output:
- 	    file("multiqc_report.html") 					// do not send the results to any channel
-	
-	    script:
- 	    """
-	    multiqc .
-	    """
+    output:
+    file("multiqc_report.html") 					// do not send the results to any channel
+
+    script:
+    """
+    multiqc .
+    """
 }
 
 
