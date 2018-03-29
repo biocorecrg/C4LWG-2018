@@ -2,6 +2,33 @@
 Hands-on tutorial on Nextflow and Containers (Docker and Singularity). Paris 2018.
 For this tutorial we need to install Nextflow (https://www.nextflow.io/), Singularity (http://singularity.lbl.gov/) and Docker (https://www.docker.com/).
 
+## Virtual appliance
+
+For sake of simplicity we provide a virtual appliance in [OVA format](https://en.wikipedia.org/wiki/Open_Virtualization_Format). They can be imported in a virtual machine system such as [Virtualbox](https://www.virtualbox.org/) [Video instructions](https://www.youtube.com/watch?v=ZCfRtQ7-bh8).
+
+   * OVA: http://biocore.crg.eu/courses/C4LWG-2018/C4LWG-2018-full.ova
+   * OVA md5: http://biocore.crg.eu/courses/C4LWG-2018/C4LWG-2018-full.ova.md5
+
+### Check appliances download
+
+Take care that files downloaded correctly (around 6GB). You can check with MD5 utilites from the terminal
+
+In Linux:
+
+    $ md5sum -c C4LWG-2018-full.ova.md5 
+    C4LWG-2018-full.ova: OK
+    
+In Mac:
+
+    $ md5 C4LWG-2018-full.ova 
+    $ cat C4LWG-2018-full.ova.md5
+Check both outputs show the same string.
+
+
+## Manual installation
+
+### Software requirements
+
 - For installing NextFlow we need Java version 1.8. You can check with "java -version". Then just type "curl -s https://get.nextflow.io | bash" for installing a local copy in your current directory. Finally type "./nextflow run hello" for testing. 
 - Mac OS X users can consider installing [Homebrew](https://brew.sh) and [Homebrew-Cask](https://caskroom.github.io/).
 - Docker (Community Edition): https://www.docker.com/community-edition . Download and install last stable version in your system.
@@ -12,7 +39,7 @@ For this tutorial we need to install Nextflow (https://www.nextflow.io/), Singul
       * If using Vagrant with Singularity, Vagrant shared folder with the host is ```/vagrant```. That would be the best location to place generated images.
 
 
-## Software installation
+### Container installation
 
 You can retrieve Docker image with all used software by doing:
 
@@ -22,12 +49,12 @@ Alternately, you can always modify and build a Docker image yourself in your com
 
     docker build -t myimagename .
 
-### Converting Docker image into Singularity image
+#### Converting Docker image into Singularity image
 
     singularity build c4lwg-2018.simg docker://biocorecrg/c4lwg-2018
 
 
-#### Notes
+##### Notes
 
 * If you experience problems executing the generated image, e.g., ```ERROR  : No valid /bin/sh in container```, try to change your umask (e. g., ```umask 000```) [Ref](https://github.com/singularityware/singularity/issues/1079)
 
