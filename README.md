@@ -4,7 +4,7 @@ For this tutorial we need to install Nextflow (https://www.nextflow.io/), Singul
 
 ## Virtual appliance
 
-For sake of simplicity we provide a virtual appliance in [OVA format](https://en.wikipedia.org/wiki/Open_Virtualization_Format). They can be imported in a virtual machine system such as [Virtualbox](https://www.virtualbox.org/) [Video instructions](https://www.youtube.com/watch?v=ZCfRtQ7-bh8).
+For sake of simplicity we provide a virtual appliance in [OVA format](https://en.wikipedia.org/wiki/Open_Virtualization_Format). They can be imported in a virtual machine system such as [Virtualbox](https://www.virtualbox.org/) ([video instructions](https://www.youtube.com/watch?v=ZCfRtQ7-bh8)).
 
    * OVA: http://biocore.crg.eu/courses/C4LWG-2018/C4LWG-2018-full.ova
    * OVA md5: http://biocore.crg.eu/courses/C4LWG-2018/C4LWG-2018-full.ova.md5
