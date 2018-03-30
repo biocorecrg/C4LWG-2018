@@ -67,6 +67,12 @@ Alternately, you can always modify and build a Docker image yourself in your com
 
 * If you experience problems executing the generated image, e.g., ```ERROR  : No valid /bin/sh in container```, try to change your umask (e. g., ```umask 000```) [Ref](https://github.com/singularityware/singularity/issues/1079)
 
+#### Generating a Singularity image from a Singularity recipe
+
+There are other ways to generate Singularity images from other [recipe approaches](http://singularity.lbl.gov/docs-recipes). As a example, using [Debootstrap](http://singularity.lbl.gov/build-debootstrap) (being root is required in [these cases](http://singularity.lbl.gov/docs-build-container)) 
+
+    singularity build c4lwg-2018.xenial.simg Singularity.xenial
+
 
 ## Nextflow usage
 
