@@ -77,7 +77,7 @@ There are other ways to generate Singularity images from other [recipe approache
 ## Nextflow usage
 
 
-We go in the first folder **test0**
+We can reach the first folder **test0**
 
 ***cd test0; ls***
 * test0.nf
