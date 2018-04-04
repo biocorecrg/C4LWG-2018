@@ -106,7 +106,7 @@ process multiQC {
 }
 
 workflow.onComplete { 
-	println ( workflow.success ? "\nDone! Open the following report in your browser --> multiqcOutputFolder/multiqc_report.html\n" : "Oops .. something went wrong" )
+	println ( workflow.success ? "\nDone! Open the following report in your browser --> ${multiqcOutputFolder}/multiqc_report.html\n" : "Oops .. something went wrong" )
 }
 
 
