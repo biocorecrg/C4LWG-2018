@@ -33,6 +33,8 @@ str = Channel.from('hello', 'hola', 'bonjour', 'ciao')
  */
  
 process printHello {
+   tag str
+   
    input:
    val str 
 
