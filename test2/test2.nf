@@ -53,8 +53,8 @@ if (params.help) {
 /*
  * Defining the output folders.
  */
-fastqcOutputFolder    = "ouptut_1_fastqc"
-multiqcOutputFolder   = "ouptut_1_multiQC"
+fastqcOutputFolder    = "ouptut_fastqc"
+multiqcOutputFolder   = "ouptut_multiQC"
 
 
 /* Reading the file list and creating a "Channel": a queue that connects different channels.
