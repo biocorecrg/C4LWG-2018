@@ -109,4 +109,18 @@ workflow.onComplete {
 	println ( workflow.success ? "\nDone! Open the following report in your browser --> ${multiqcOutputFolder}/multiqc_report.html\n" : "Oops .. something went wrong" )
 }
 
-
+workflow.onComplete {
+    def subject = 'RNAseq execution'
+    def recipient = "${params.email}"
+    def attachment = "${multiqcOutputFolder}/multiqc_report.html"
+    ['mail', '-s', subject, '-a', attachment, recipient].execute() << """
+    Pipeline execution summary
+    ---------------------------
+    Completed at: ${workflow.complete}
+    Duration    : ${workflow.duration}
+    Success     : ${workflow.success}
+    workDir     : ${workflow.workDir}
+    exit status : ${workflow.exitStatus}
+    Error report: ${workflow.errorReport ?: '-'}
+    """
+}
