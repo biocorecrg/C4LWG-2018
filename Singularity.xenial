@@ -9,7 +9,7 @@ Include: build-essential curl python python-dev openjdk-8-jdk bzip2 zip unzip
 %post
 
     FASTQC_VERSION=0.11.5
-    MULTIQC_VERSION=1.5
+    MULTIQC_VERSION=1.7
     BOWTIE_VERSION=1.2.1.1
 
     cd /usr/local; curl -k -L https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip > fastqc.zip 
