@@ -7,7 +7,7 @@ MAINTAINER Bioinformatics Core CRG <biocore@crg.eu>
 
 # Specific software versions
 ARG FASTQC_VERSION=0.11.5
-ARG MULTIQC_VERSION=1.5
+ARG MULTIQC_VERSION=1.7
 ARG BOWTIE_VERSION=1.2.1.1
 
 #Install FASTQC
