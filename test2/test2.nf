@@ -74,6 +74,7 @@ Channel
 process fastqc {
     publishDir fastqcOutputFolder  			// where (and whether) to publish the results
     tag "$read"  							// during the execution prints the indicated variable for follow-up
+    label 'onecpu' 
 
     input:
     file(read) from reads_for_fastqc  		// it defines the input of the process. It sets values from a channel
