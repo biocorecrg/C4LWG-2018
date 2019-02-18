@@ -47,6 +47,9 @@ If you need to use the root user (e.g. via ```su -l```), it has the same passwor
     * [Mac](https://singularity.lbl.gov/install-mac) (Homebrew and Homebrew-Cask are needed)
       * If using Vagrant with Singularity, Vagrant shared folder with the host is ```/vagrant```. That would be the best location to place generated images.
 
+### Installing nextflow
+curl -s https://get.nextflow.io | bash
+
 
 ### Container installation
 
